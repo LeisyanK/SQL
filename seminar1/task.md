@@ -20,6 +20,7 @@ ProductCount INT DEFAULT 0,
 Price DECIMAL
 );
 
+
 /*
 Заполните БД данными.
 */
