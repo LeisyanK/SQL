@@ -1,15 +1,15 @@
-/*
-1.
-Создайте таблицу с мобильными телефонами, используя графический интерфейс.
-Id, ProductName, Manufacturer, ProductCount, Price
-*/
-CREATE TABLE `seminar_1`.`products` (
-  `Id` INT NOT NULL AUTO_INCREMENT,
-  `ProductName` VARCHAR(30) NOT NULL,
-  `Manufacturer` VARCHAR(20) NOT NULL,
-  `ProductCount` INT NULL DEFAULT 0,
-  `Price` DECIMAL NULL,
-  PRIMARY KEY (`Id`));
+/*  
+1.  
+Создайте таблицу с мобильными телефонами, используя графический интерфейс.  
+Id, ProductName, Manufacturer, ProductCount, Price  
+*/  
+CREATE TABLE `seminar_1`.`products` (  
+  `Id` INT NOT NULL AUTO_INCREMENT,  
+  `ProductName` VARCHAR(30) NOT NULL,  
+  `Manufacturer` VARCHAR(20) NOT NULL,  
+  `ProductCount` INT NULL DEFAULT 0,  
+  `Price` DECIMAL NULL,  
+  PRIMARY KEY (`Id`));  
 
 CREATE TABLE Products
 (
