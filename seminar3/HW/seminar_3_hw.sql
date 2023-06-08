@@ -118,8 +118,15 @@ ORDER BY salary DESC;
 -- 2. Отсортируйте по возрастанию поле “Зарплата” и выведите 5 строк с наибольшей заработной платой (возможен подзапрос)
 SELECT *
 FROM employee
-ORDER BY salary
+ORDER BY salary DESC
 LIMIT 5;
+
+Select * from 
+(SELECT *
+FROM employee
+ORDER BY salary DESC
+LIMIT 5) E
+ORDER BY salary;
 
 -- 3. Выполните группировку всех сотрудников по специальности , суммарная зарплата которых превышает 100000
 SELECT speciality, SUM(salary) AS SUMMA
