@@ -32,3 +32,11 @@ SELECT *,
     -- LEAD(Station_Time) OVER(PARTITION BY Train_Id) - Station_Time AS Next_Time,
     TIMEDIFF(LEAD(Station_Time) OVER(PARTITION BY Train_Id), Station_Time) AS "время до следующей станции"
 FROM Shedule;
+
+-- В последней задаче нам необходимо обязательно добавить сортировку в оконную функцию, так как 
+-- мы не можем полагаться на то, в каком порядке лежат записи в бд
+SELECT *,
+	LEAD(Station_Time) OVER(PARTITION BY Train_Id) AS Next_Time,
+    -- LEAD(Station_Time) OVER(PARTITION BY Train_Id) - Station_Time AS Next_Time,
+    TIMEDIFF(LEAD(Station_Time) OVER(PARTITION BY Train_Id ORDER BY Station_Time), Station_Time) AS "время до следующей станции"
+FROM Shedule;
