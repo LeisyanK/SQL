@@ -98,7 +98,7 @@ VALUES(9, 'Ярославль', 500000);
 
 -- MAN
 INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
-VALUES('9152222221','Андрей','Николаев', 1, 22);
+VALUES('9152222289','Андрей','Ларионов', 1, 22);
 
 
 INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
@@ -131,3 +131,47 @@ VALUES('9213333332','Миша','Рогозин', 2, 21);
 
 INSERT INTO MAN (PHONENUM,FIRSTNAME,LASTNAME,CITYCODE,YEAROLD)
 VALUES('9214444444','Алексей','Галкин', 1, 38);
+
+/* 1.	Выбрать код , название города и популяцию , код , города и популяцию где код города больше 
+текущего кода города на 2
+*/
+select citycode, cityname, peoples
+from city a, city b;
+
+select a.citycode, a.cityname, a.peoples, b.citycode, b.cityname, b.peoples
+from city a
+join city b on a.citycode + 2 = b.citycode;
+
+select a.citycode, a.cityname, a.peoples, b.citycode, b.cityname, b.peoples
+from city a
+left join city b on a.citycode + 2 = b.citycode;
+
+-- 2.	Вывести марку авто - а так же сколько авто такой марки в таблице , вывести записи где 
+-- количество авто такой марки больше 2, записи на должны дублироваться
+select * from auto;
+select mark, count(*) as c
+from auto
+group by mark
+having c > 2;
+-- подзапрос
+
+
+-- 3.	Вывести Марку и цвет автомобиля - имя и фамилию покупателя, для всех покупателей, которые живут 
+-- в городе с населением больше 1 млн человек.
+select DISTINCT a.mark, a.color, m.firstname, m.lastname, m.PHONENUM, c.cityname from auto a, man m, city c
+where m.PHONENUM = a.PHONENUM and c.CITYCODE = m.CITYCODE and c.peoples > 1000000;
+select * from man;
+
+-- 4.	Вывести на экран людей которые живут в городах с населением больше 1000000 , если людей с таким 
+-- же именем нет в таблице MAN
+select * from man;
+select * from city;
+
+select m.firstname from man m, city c
+where m.citycode = c.citycode and c.peoples > 1000000;
+
+select m.firstname -- , count(m.firstname) as C 
+from man m, city c
+where m.citycode = c.citycode and c.peoples > 1000000
+group by m.firstname having count(m.firstname) = 1;
+
