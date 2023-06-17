@@ -89,3 +89,8 @@ END $$
 DELIMITER ;
 
 SELECT even(15);
+
+-- Конвертацию также можем реализовать сразу с выводом
+CREATE FUNCTION format_seconds(seconds INT)
+RETURNS VARCHAR(50)
+RETURN CONCAT(FLOOR(seconds/86400), ' days ', FLOOR(mod(seconds, 86400) / 3600), ' hours ', FLOOR(mod(seconds, 3600) / 60), ' minutes ', mod(seconds, 60), ' seconds');
